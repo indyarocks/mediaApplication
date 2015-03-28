@@ -12,12 +12,15 @@
       <li class="mediaItem">
         <div class="imgWrap">
           <a href="<%= media[:url] %>" target="_blank">
-            <img src="<%= img_url %>"/>
+            <img alt='Public Media' src="<%= img_url %>"/>
           </a>
         </div>
         <div class="descWrap">
           <%= media[:description] %>
         </div>
+        <span class="timestamp">
+                Posted <%= time_ago_in_words(media.created_at) %> ago.
+            </span>
         <div class="clear"></div>
       </li>
   <% end %>
