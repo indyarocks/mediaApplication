@@ -1,7 +1,25 @@
 <% provide(:title, "Home Page") %>
-<ol>
+<div class="searchBar">
+  <form action="/" method="GET">
+    Search: <input type="text" name="q" style="width: 200px;" />
+  </form>
+</div>
+<ul class="mediaList">
   <% @public_media.each do |media| %>
-      <li><%= media %></li>
+      <%
+         img_url = media[:url].include?("youtube") ? 'http://gadgetbox.com.br/Mercadolivre/Anuncios/Peliculas_de_Vidro_Nillkin/Imagens/youtube-logo-play-button.png' : media[:url]
+      %>
+      <li class="mediaItem">
+        <div class="imgWrap">
+          <a href="<%= media[:url] %>" target="_blank">
+            <img src="<%= img_url %>"/>
+          </a>
+        </div>
+        <div class="descWrap">
+          <%= media[:description] %>
+        </div>
+        <div class="clear"></div>
+      </li>
   <% end %>
-  <%= will_paginate(@public_media) %>
-</ol>
+</ul>
+<%= will_paginate(@public_media) %>

@@ -4,7 +4,7 @@ class MediasController < ApplicationController
 
   def create
     @media = current_user.medias.build(description: media_params[:description],
-                                      url: media_params[:url], permission: media_params[:permission])
+                                      url: media_params[:url], permission: media_params[:permission].to_i)
     if @media.save
       flash[:success] = "Media created!"
       redirect_to root_url

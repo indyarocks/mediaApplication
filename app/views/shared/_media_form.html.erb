@@ -7,7 +7,7 @@
     <div class="field">
       <%= f.text_area :url , placeholder: "Youtube or Image link" %>
     </div>
-    <%= check_box('permission', false) %>
+    Mark it Public: <%= check_box('media', 'permission') %></br>
 
     <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 

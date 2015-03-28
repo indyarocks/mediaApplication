@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @new_media = current_user.medias.build
-    @medias = @user.medias.paginate(:page => params[:page], :per_page => 30)
+    params[:q] ||= '%'
+    @medias = @user.medias.where('description LIKE ?', "#{params[:q]}%").paginate(:page => params[:page], :per_page => 30)
   end
 
   def new

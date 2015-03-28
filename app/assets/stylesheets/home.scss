@@ -1,3 +1,31 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+ul li{
+  list-style-type: none;
+}
+.mediaItem {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.clear{
+  clear: both;
+}
+.imgWrap{
+  float: left;
+  width: 120px;
+  margin-right: 10px;
+}
+.imgWrap img{
+  width: 120px;
+  height: 120px;
+  border: 1px solid #ccc;
+}
+.descWrap{
+  float: left;
+  width: 780px;
+}
