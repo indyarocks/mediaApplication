@@ -17,13 +17,13 @@ ul li{
 }
 .imgWrap{
   float: left;
+  height: 120px;
   width: 120px;
   margin-right: 10px;
+  border: 1px solid #ccc;
 }
 .imgWrap img{
   width: 120px;
-  height: 120px;
-  border: 1px solid #ccc;
 }
 .descWrap{
   float: left;
