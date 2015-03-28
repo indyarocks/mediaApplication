@@ -7,10 +7,10 @@ class MediasController < ApplicationController
                                       url: media_params[:url], permission: media_params[:permission].to_i)
     if @media.save
       flash[:success] = "Media created!"
-      redirect_to root_url
     else
-      render root_url
+      flash[:error] = @media.errors.full_messages.join(',  ')
     end
+    redirect_to root_url
 
   end
 
