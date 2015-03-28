@@ -22,7 +22,7 @@
   <div class="span8">
     <% if @user.medias.any? %>
         <ol class="media">
-          <%= render 'shared/medias', locals: {medias: @medias} %>
+          <%= render 'shared/medias', locals: {medias: @medias, media_permissions: @media_permissions} %>
         </ol>
         <%= will_paginate(@medias) %>
     <% end %>

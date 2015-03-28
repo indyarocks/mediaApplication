@@ -1,10 +1,12 @@
 <% if @medias.any? %>
     <ol class="medias">
       <% @medias.each do |media| %>
-          <li id="<%= media.id %>">
+          <% public_media =  (@media_permissions[:is_public] == media.permission) %>
+          <li id="<%= media.id %>" class="<%= 'public-media' if public_media %>">
             <span class="content">
                 <%= link_to "#{media.description}", "#{media.url}", :target => "_blank" %>
             </span>
+            <span class="public-media-placeholder"><%= 'Public Post: ' if public_media %></span>
             <span class="timestamp">
                 Posted <%= time_ago_in_words(media.created_at) %> ago.
             </span>
