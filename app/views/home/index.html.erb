@@ -1,0 +1,7 @@
+<% provide(:title, "Home Page") %>
+<ol>
+  <% @public_media.each do |media| %>
+      <li><%= media %></li>
+  <% end %>
+  <%= will_paginate(@public_media) %>
+</ol>

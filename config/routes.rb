@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  get 'help' => 'home#help'
+  get 'about' => 'home#help'
+  get 'contact' => 'home#contact'
+  resources :sessions, only: [:new, :create, :destroy]
+  get '/signup' => "users#new"
+  get    'signin'   => 'sessions#new'
+  delete 'signout'  => 'sessions#destroy'
+  resources :users, except: [:destroy, :index]
+  resources :media, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

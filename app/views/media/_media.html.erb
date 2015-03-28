@@ -1,0 +1,11 @@
+<li>
+  <%= link_to "#{media.description}", "#{media.url}" , class: "content"%>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(media.created_at) %> ago.
+  </span>
+  <% if current_user?(media.user) %>
+    <%= link_to "delete", media, method: :delete,
+                                          data: { confirm: "Are you sure?"},
+                                          title: media.description %>
+  <% end %>
+</li>

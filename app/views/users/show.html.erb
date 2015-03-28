@@ -1,0 +1,21 @@
+<%= provide(:title, @user.first_name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= "#{@user.first_name} #{@user.last_name}"%>
+      </h1>
+    </section>
+  </aside>
+  <div class="span8">
+    <% if @user.medias.any? %>
+        <h3>Posts: (<%= @user.medias.count %>)</h3>
+        <ol class="media">
+          <%= render @medias %>
+        </ol>
+        <%= will_paginate(@medias) %>
+    <% end %>
+  </div>
+</div>
+
