@@ -1,7 +1,16 @@
 <% if @medias.any? %>
     <ol class="medias">
       <% @medias.each do |media| %>
-          <%= render partial: 'shared/media_item', locals: {media: media} %>
+          <li id="<%= media.id %>">
+            <span class="content">
+                <%= link_to "#{media.description}", "#{media.url}", :target => "_blank" %>
+            </span>
+            <span class="timestamp">
+                Posted <%= time_ago_in_words(media.created_at) %> ago.
+            </span>
+                <%= link_to "delete", media, method: :delete,
+                        data: { confirm: "Are you sure?"} %>
+          </li>
       <% end %>
     </ol>
     <%= will_paginate @medias %>
