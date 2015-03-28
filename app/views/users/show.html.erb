@@ -7,12 +7,17 @@
         <%= "#{@user.first_name} #{@user.last_name}"%>
       </h1>
     </section>
+    <section>
+      <%= render 'shared/media_form', locals: {media: @new_media} %>
+    </section>
+    <span> Total Posts:
+    <%= pluralize(current_user.medias.count, "media") %>
+    </span>
   </aside>
   <div class="span8">
     <% if @user.medias.any? %>
-        <h3>Posts: (<%= @user.medias.count %>)</h3>
         <ol class="media">
-          <%= render @medias %>
+          <%= render 'shared/medias', locals: {medias: @medias} %>
         </ol>
         <%= will_paginate(@medias) %>
     <% end %>

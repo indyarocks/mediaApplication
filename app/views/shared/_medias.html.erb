@@ -1,0 +1,8 @@
+<% if @medias.any? %>
+    <ol class="medias">
+      <% @medias.each do |media| %>
+          <%= render partial: 'shared/media_item', locals: {media: media} %>
+      <% end %>
+    </ol>
+    <%= will_paginate @medias %>
+<% end %>

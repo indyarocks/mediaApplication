@@ -1,9 +1,9 @@
-class MediaController < ApplicationController
+class MediasController < ApplicationController
   before_action :signed_in_user
   before_action :correct_user, only: :destroy
 
   def create
-    @media = current_user.media.build(description: media_params[:description],
+    @media = current_user.medias.build(description: media_params[:description],
                                       url: media_params[:url], permission: media_params[:permission])
     if @media.save
       flash[:success] = "Media created!"

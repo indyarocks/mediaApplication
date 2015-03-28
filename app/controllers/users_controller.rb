@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
 
   before_action :signed_in_user, only: [:edit, :update, :index, :destroy, :following, :followers]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :show]
   before_action :is_signed_in, only: [:new, :create]
 
   def show
     @user = User.find(params[:id])
+    @new_media = current_user.medias.build
     @medias = @user.medias.paginate(:page => params[:page], :per_page => 30)
   end
 
