@@ -56,6 +56,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   gem 'rspec-rails', '3.2.1'
+  gem 'pry'
 end
 
 group :test do

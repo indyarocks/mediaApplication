@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @new_media = current_user.medias.build
     params[:q] ||= '%'
     @media_permissions = Media::Media::PERMISSION
-    @medias = @user.medias.where('description LIKE ?', "#{params[:q]}%").paginate(:page => params[:page], :per_page => 30)
+    @medias = @user.medias.where('description LIKE ?', "#{params[:q]}%").order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
   end
 
   def new
