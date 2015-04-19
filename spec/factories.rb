@@ -13,11 +13,11 @@ FactoryGirl.define do
     user
 
     factory :is_public do
-      permission = Media::PERMISSION[:is_public]
+      permission Media::PERMISSION_HASH[:is_public]
     end
 
     factory :is_private do
-      permission = Media::PERMISSION[:is_private]
+      permission Media::PERMISSION_HASH[:is_private]
     end
   end
 end
