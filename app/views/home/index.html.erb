@@ -16,7 +16,7 @@
           </a>
         </div>
         <div class="descWrap">
-          <%= link_to media[:description], media[:url] %>
+          <%= link_to media[:description], media[:url], target: '_blank' %>
         </div>
         <span class="timestamp">
                 Posted <%= time_ago_in_words(media.created_at) %> ago.
