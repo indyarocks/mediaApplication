@@ -9,6 +9,7 @@ RSpec.describe User, :type => :model do
 
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
+  it { should respond_to(:name) }
   it { should respond_to(:password_digest)}
   it { should respond_to(:password)}
   it { should respond_to(:password_confirmation)}
@@ -27,6 +28,14 @@ RSpec.describe User, :type => :model do
   describe "when last name is not present" do
     before { @user.last_name = ""}
     it { should_not be_valid }
+  end
+
+  describe "name should be combination of first_name and last_name" do
+    before do
+      @user.first_name = "Chandan"
+      @user.last_name = "Kumar"
+    end
+    it {expect(@user.name).to eq 'Chandan Kumar'}
   end
 
   describe "when email is not present" do

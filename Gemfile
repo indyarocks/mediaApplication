@@ -62,6 +62,9 @@ end
 group :test do
   gem 'factory_girl_rails', '4.5.0'
   gem 'database_cleaner', '1.4.1'
+  gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara', '2.4.4'
+  gem "launchy", '2.4.3'
 end
 
 

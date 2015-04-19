@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
   get 'contact' => 'home#contact'
   resources :sessions, only: [:new, :create, :destroy]
-  get '/signup' => "users#new"
+  get 'signup' => "users#new"
   get    'signin'   => 'sessions#new'
   delete 'signout'  => 'sessions#destroy'
   resources :users, except: [:destroy, :index]
