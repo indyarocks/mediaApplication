@@ -5,10 +5,10 @@ class UsersController < ApplicationController
   before_action :is_signed_in, only: [:new, :create]
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     @new_media = current_user.medias.build
     params[:q] ||= '%'
-    @media_permissions = Media::Media::PERMISSION_HASH
+    @media_permissions = Media::PERMISSION_HASH
     @medias = @user.feed(params[:q]).paginate(:page => params[:page], :per_page => 30)
   end
 
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     # Before filters
 
     def correct_user
-      @user = User.find(params[:id]) # rescue nil, just in case there is no user with params[:id]
+      @user = User.find_by(id: params[:id]) # rescue nil, just in case there is no user with params[:id]
       redirect_to(root_url) unless current_user?(@user)
     end
 
