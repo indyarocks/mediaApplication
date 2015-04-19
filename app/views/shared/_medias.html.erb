@@ -3,14 +3,18 @@
       <% @medias.each do |media| %>
           <% public_media =  (@media_permissions[:is_public] == media.permission) %>
           <li id="<%= media.id %>" class="<%= 'public-media' if public_media %>">
+            <div>
             <span class="content">
-                <%= link_to "#{media.description}", "#{media.url}", :target => "_blank" %>
+              <% if public_media %>
+                  <%= image_tag('public.png', size: "20x20", alt: "Public")%>
+              <% end %>
+              <%= link_to "#{media.description}", "#{media.url}", :target => "_blank" %>
             </span>
-            <span class="public-media-placeholder"><%= 'Public Post: ' if public_media %></span>
+            </div>
             <span class="timestamp">
                 Posted <%= time_ago_in_words(media.created_at) %> ago.
             </span>
-                <%= link_to "delete", media, method: :delete,
+            <%= link_to "delete", media, method: :delete,
                         data: { confirm: "Are you sure?"} %>
           </li>
       <% end %>
