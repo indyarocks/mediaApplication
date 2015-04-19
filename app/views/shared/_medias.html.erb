@@ -6,7 +6,7 @@
             <div>
             <span class="content">
               <% if public_media %>
-                  <%= image_tag('public.png', size: "20x20", alt: "Public")%>
+                  <%= image_tag('public.png', size: "20x20", alt: "Public", title: 'Public Media')%>
               <% end %>
               <%= link_to "#{media.description}", "#{media.url}", :target => "_blank" %>
             </span>
