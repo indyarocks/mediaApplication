@@ -15,6 +15,7 @@ RSpec.describe User, :type => :model do
   it { should respond_to(:authenticate)}
   it { should respond_to(:remember_token)}
   it { should respond_to(:medias)}
+  it { should respond_to(:feed)}
 
   it { should be_valid }
 
@@ -118,4 +119,32 @@ RSpec.describe User, :type => :model do
     before { @user.save }
     it {expect(@user.remember_token).not_to be_blank}
   end
+
+  describe "user feed" do
+    before {@user.save}
+
+    let!(:older_media){ FactoryGirl.create(:media, user: @user, created_at: 1.day.ago)}
+    let!(:newer_media){ FactoryGirl.create(:media, user: @user, created_at: 1.hour.ago)}
+
+    it "should have right medias in latest first order" do
+      expect(@user.feed.to_a).to eq [newer_media, older_media]
+    end
+
+    it "should have two feed without feed 'keyword'" do
+      expect(@user.feed.count).to eq 2
+    end
+
+    describe 'feed with keyword' do
+      let!(:keyword_media) {FactoryGirl.create(:media, user: @user, description: 'keyword media')}
+
+      it "should have one feed with keyword 'keyword'" do
+        expect(@user.feed('keyword').count).to eq 1
+      end
+
+      it "should have zero feed with keyword 'xyz'" do
+        expect(@user.feed('xyz').count).to eq 0
+      end
+    end
+  end
+
 end

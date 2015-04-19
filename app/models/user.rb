@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :medias, dependent: :destroy
+  has_many :medias, -> { order "created_at DESC" }, dependent: :destroy
   before_save {email.downcase!}
   before_create :create_remember_token
 
@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def feed(keyword = '')
+    self.medias.where('description LIKE ?', "%#{keyword}%")
   end
 
   private
