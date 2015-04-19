@@ -21,3 +21,9 @@ def fill_valid_signup_details
   fill_in "Password", with: "foobar"
   fill_in "Confirm Password", with: "foobar"
 end
+
+RSpec::Matchers.define :have_error_message do |message|
+  match do |page|
+    expect(page).to have_selector('div.alert.alert-error', text: message)
+  end
+end
