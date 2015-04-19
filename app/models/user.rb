@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def feed(keyword = '')
-    self.medias.where('description LIKE ?', "%#{keyword}%")
+    self.medias.where('LOWER(description) LIKE LOWER(?)', "%#{keyword}%")
   end
 
   private

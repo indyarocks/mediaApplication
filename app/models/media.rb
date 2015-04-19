@@ -12,7 +12,7 @@ class Media < ActiveRecord::Base
 
   # Fetches public media
   def self.public_media(keyword='')
-    where("description LIKE ? AND permission = ?", "%#{keyword}%", Media::PERMISSION_HASH[:is_public]).order("id DESC")
+    where("LOWER(description) LIKE LOWER(?) AND permission = ?", "%#{keyword}%", Media::PERMISSION_HASH[:is_public]).order("id DESC")
   end
 
 
