@@ -60,10 +60,10 @@ RSpec.describe Media, :type => :model do
   end
 
   describe "public media" do
-    let!(:public_media1){ FactoryGirl.create(:is_public, description: 'public one')}
-    let!(:public_media2){ FactoryGirl.create(:is_public, description: 'public two')}
-    let!(:private_media1){ FactoryGirl.create(:is_private, description: 'private one')}
-    let!(:private_media2){ FactoryGirl.create(:is_private, description: 'private two')}
+    let!(:public_media1){ FactoryGirl.create(:public_media, description: 'public one')}
+    let!(:public_media2){ FactoryGirl.create(:public_media, description: 'public two')}
+    let!(:private_media1){ FactoryGirl.create(:private_media, description: 'private one')}
+    let!(:private_media2){ FactoryGirl.create(:private_media, description: 'private two')}
 
     it "should have fetch only public media" do
       expect(Media.public_media.count).to eq 2

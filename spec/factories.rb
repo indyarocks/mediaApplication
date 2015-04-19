@@ -12,11 +12,11 @@ FactoryGirl.define do
     sequence(:description) {|n| "Description #{n}"}
     user
 
-    factory :is_public do
+    factory :public_media do
       permission Media::PERMISSION_HASH[:is_public]
     end
 
-    factory :is_private do
+    factory :private_media do
       permission Media::PERMISSION_HASH[:is_private]
     end
   end
